@@ -4,25 +4,50 @@ A simple blog and community platform for developers to share their journey, conn
 
 ## 🚀 Getting Started
 
-### Windows
+### 🌐 Live Demo
+Visit the live demo at: **[TechBlog on Vercel](https://your-deployment-url.vercel.app)**
+
+### 📦 Local Development
+
+#### Windows
 ```cmd
 # Double-click start_server.bat or run:
 start_server.bat
 ```
 
-### Linux/macOS
+#### Linux/macOS
 ```bash
 chmod +x start_server.sh
 ./start_server.sh
 ```
 
-### Manual Setup
+#### Manual Setup
 ```bash
 pip install -r requirements.txt
 python app.py
 ```
 
-The server will start at `http://localhost:5000`
+The local server will start at `http://localhost:5000`
+
+### 🚀 Deploy to Vercel
+
+#### Quick Deploy
+1. Install Vercel CLI: `npm install -g vercel`
+2. Run deployment script:
+   - Windows: `deploy_to_vercel.bat`
+   - Linux/Mac: `./deploy_to_vercel.sh`
+
+#### Manual Deploy
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Login to Vercel
+vercel login
+
+# Deploy
+vercel --prod
+```
 
 ## ✨ Features
 
@@ -68,13 +93,15 @@ Feel free to use these accounts to explore the platform!
 
 ```
 techblog/
-├── app.py                # Main application
-├── requirements.txt      # Dependencies
-├── start_server.bat     # Windows launcher
-├── start_server.sh      # Unix launcher
-├── techblog.db          # Database (auto-created)
-├── uploads/             # User uploaded files
-└── README.md            # This file
+├── app.py                    # Main Flask application
+├── api/app.py               # Serverless-optimized version
+├── vercel.json              # Vercel deployment config
+├── requirements.txt         # Python dependencies
+├── start_server.bat/.sh     # Local development launchers
+├── deploy_to_vercel.bat/.sh # Vercel deployment scripts
+├── uploads/                 # User uploaded files
+├── techblog.db             # Database (auto-created locally)
+└── README.md               # This file
 ```
 
 ## 🔧 Development
