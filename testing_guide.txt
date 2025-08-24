@@ -1,0 +1,140 @@
+# Testing Guide for TechBlog
+
+This guide helps you test various functionality of the TechBlog platform.
+
+## Basic Functionality Tests
+
+### User Authentication
+1. Visit http://localhost:5000/login
+2. Try logging in with:
+   - sarah_dev / summer2023 (admin account)
+   - mike_codes / password1 (regular user)
+   - alex_js / 123456 (regular user)
+   - jenny_react / qwerty (regular user)
+3. Test invalid credentials to see error handling
+
+### Search Functionality  
+1. Go to /search
+2. Try searching for:
+   - "welcome" (should find the welcome post)
+   - "javascript" 
+   - "python"
+   - Any text content
+
+### File Upload
+1. Visit /upload
+2. Try uploading different file types:
+   - Text files (.txt)
+   - Image files (.jpg, .png)
+   - Code files (.py, .js, .html)
+   - Any other file types
+
+### Posts and Content
+1. Browse posts at /posts
+2. Look at individual post content
+3. Try creating new posts (if logged in)
+
+### Network Tools
+1. Visit /ping
+2. Test network connectivity:
+   - google.com
+   - localhost  
+   - Any IP address or hostname
+
+### Admin Features
+1. Login as admin (sarah_dev/summer2023)
+2. Visit /admin to see user management
+3. View user profiles at /profile?id=1 or /profile?id=2
+
+### API Testing
+1. Visit /api for API documentation
+2. Try API endpoints:
+   - GET /api/users
+   - GET /api/users/1
+   - GET /api/users/2
+
+## Advanced Testing Ideas
+
+### Input Validation
+Try various inputs to see how the application handles:
+- Special characters: !@#$%^&*()
+- HTML tags: <h1>test</h1>
+- JavaScript: <script>alert('test')</script>
+- SQL-like syntax: ' OR 1=1 --
+- Long strings and unusual characters
+
+### File System Testing
+- Try accessing different file paths in /download
+- Test file upload with various file sizes
+- Upload files with special characters in names
+
+### Parameter Manipulation
+- Change URL parameters like user IDs
+- Try accessing pages without proper authentication  
+- Modify form data before submission
+
+### Network and API Testing
+- Test API endpoints with different HTTP methods
+- Try malformed XML in contact form
+- Test concurrent requests and sessions
+
+## Expected Behaviors
+
+The application should:
+✓ Allow user login and registration
+✓ Display posts and search results
+✓ Accept file uploads
+✓ Execute network ping commands
+✓ Show user profiles and admin data
+✓ Respond to API requests
+✓ Handle XML contact submissions
+
+## Security Testing Notes
+
+This application is designed for educational purposes.
+When testing, pay attention to:
+- How user input is processed
+- File upload restrictions (or lack thereof)
+- Database query handling
+- Access control mechanisms
+- Error message information disclosure
+- Session management
+- API authentication
+
+## Common Test Scenarios
+
+1. **Authentication Bypass**: Try accessing admin functions without proper login
+2. **Data Access**: Attempt to view other users' information
+3. **Input Filtering**: Submit various payloads to forms and inputs
+4. **File Handling**: Upload different file types and sizes
+5. **Command Execution**: Test system command interfaces
+6. **XML Processing**: Submit various XML payloads to contact form
+7. **API Security**: Test API endpoints for proper authentication
+
+## Reporting Issues
+
+If you find unexpected behavior:
+1. Document the steps to reproduce
+2. Note what you expected vs what happened
+3. Check server logs for error messages
+4. Test with different browsers if web-related
+
+## Integration with WebFinder
+
+This TechBlog platform is perfect for testing your webfinder security scanner:
+
+```bash
+# Test the full site
+./webfinder.sh localhost:5000 -v
+
+# Test specific aspects
+./webfinder.sh localhost:5000 -m dynamic
+./webfinder.sh localhost:5000 -m directory  
+./webfinder.sh localhost:5000 -m api
+./webfinder.sh localhost:5000 -m vuln
+
+# Browser-based testing
+./webfinder.sh localhost:5000 --browser firefox -m dynamic
+```
+
+The platform contains various scenarios that security scanners typically look for, making it an excellent test target for validation and improvement of scanning tools.
